@@ -79,7 +79,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/"
+              path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
             <ProtectedRoute

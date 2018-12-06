@@ -13,6 +13,7 @@ class Login extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+
     this.service.login(username, password)
     .then( response => {
         this.setState({ username: "", password: "" });
@@ -39,7 +40,7 @@ class Login extends Component {
           <input type="submit" value="Login" />
         </form>
         <p>Não tem cadastro?
-            <Link to={"/auth/signup"}> Clique aqui </Link>
+            <Link to={'/signup'}> Clique aqui </Link>
         </p>
       </div>
     )

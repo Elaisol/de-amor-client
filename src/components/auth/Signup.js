@@ -3,7 +3,7 @@ import AuthService from "./auth-service";
 import { Link } from "react-router-dom";
 
 class Signup extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {username: "", password: "" };
     this.service = new AuthService();
@@ -57,7 +57,7 @@ class Signup extends Component {
 
         <p>
           Já é cadastrado?
-          <Link to={"/"}> Faça seu login</Link>
+          <Link to={'/login'}> Faça seu login</Link>
         </p>
       </div>
     );
