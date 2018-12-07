@@ -25,7 +25,7 @@ class AddAnimal extends Component {
     .then( () => {
       this.setState({ species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: ""});
     })
-    .catch( error => console.log("CADASTRA!!!!!!", error) )
+    .catch( error => console.log( error) )
   }
 
   handleChange = (event) => {
