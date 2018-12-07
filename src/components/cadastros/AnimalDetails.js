@@ -15,7 +15,7 @@ class AnimalDetails extends Component {
 
   getSingleAnimal = () => {
     const { params } = this.props.match;
-    axios.get(`http://localhost:5000/doe/doe/${params.id}`, {withCredentials:true})
+    axios.get(`http://localhost:5000/doe/${params.id}`, {withCredentials:true})
       .then(responseFromAuth => {
         const theAnimal = responseFromAuth.data;
         this.setState(theAnimal);
@@ -40,7 +40,7 @@ class AnimalDetails extends Component {
 
    deleteAnimal = (id) => {
     const { params } = this.props.match;
-    axios.delete(`http://localhost:5000/doe/doe/${params.id}`, {withCredentials:true})
+    axios.delete(`http://localhost:5000/doe/${params.id}`, {withCredentials:true})
     .then( responseFromAuth =>{
         console.log(responseFromAuth);
         this.props.history.push('/doe');       

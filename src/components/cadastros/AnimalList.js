@@ -5,16 +5,18 @@ import { Link } from 'react-router-dom';
 import AddAnimal from './AddAnimal';
 
 class AnimalList extends Component {
-  constructor(){
-      super();
-      this.state = { listOfAimals: [] };
+  constructor(props){
+      super(props);
+      this.state = { 
+        listOfAnimals: []
+      };
   }
 
   getAllAnimals = () =>{
-    axios.get(`http://localhost:5000/doe/doe`, {withCredentials:true})
-    .then(responseFromAuth => {
+    axios.get(`http://localhost:5000/doe/${this.props.loggedInUser._id}`, {withCredentials:true})
+    .then(responseFromDoe => {
       this.setState({
-        listOfAnimals: responseFromAuth.data
+        listOfAnimals: responseFromDoe.data
       })
     })
   }
@@ -24,13 +26,14 @@ class AnimalList extends Component {
   }
 
   render(){
+    console.log(this.props.loggedInUser._id)
     return(
       <div>
         <div style={{width: '60%', float:"left"}}>
           { this.state.listOfAnimals.map((animal, index) => {
             return (
               <div key={animal._id}>
-                <Link to={`/adote/${animal._id}`}>
+                <Link to={`/doe/${animal._id}`}>
                   <h3>{animal.name}</h3>
                 </Link>
                 <p style={{maxWidth: '400px'}} >{animal.description} </p>

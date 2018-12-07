@@ -4,7 +4,7 @@ import axios from 'axios';
 class AddAnimal extends Component {
   constructor(props){
       super(props);
-      this.state = { species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", avatarUrl: "", address: "", city: ""};
+      this.state = { species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: ""};
   }
    
   handleFormSubmit = (event) => {
@@ -17,20 +17,20 @@ class AddAnimal extends Component {
     const porte = this.state.porte;
     const raça = this.state.raça;
     const description = this.state.description;
-    const avatarUrl = this.state.avatarUrl;
+    // const avatarUrl = this.state.avatarUrl;
     const address = this.state.address;
     const city = this.state.city;
-    axios.post("http://localhost:5000/doe/doe", { species, sexo, name, color, age, porte, raça, description, avatarUrl, address, city }, {withCredentials:true})
+
+    axios.post("http://localhost:5000/doe", { species, sexo, name, color, age, porte, raça, description, address, city }, {withCredentials:true})
     .then( () => {
-        // this.props.getData();
-        this.setState({ species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", avatarUrl: "", address: "", city: ""});
+      this.setState({ species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: ""});
     })
-    .catch( error => console.log(error) )
+    .catch( error => console.log("CADASTRA!!!!!!", error) )
   }
 
-  handleChange = (event) => {  
-      const {name, value} = event.target;
-      this.setState({[name]: value});
+  handleChange = (event) => {
+    const {name, value} = event.target;
+    this.setState({[name]: value});
   }
 
   render(){
@@ -53,12 +53,12 @@ class AddAnimal extends Component {
           <input type="text" name="raça" value={this.state.raça} onChange={ e => this.handleChange(e)}/>
           <label>Descrição:</label>
           <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)} />
-          <label>Foto:</label>
-          <input type="text" name="title" value={this.state.avatarUrl} onChange={ e => this.handleChange(e)}/>
+          {/* <label>Foto:</label>
+          <input type="text" name="title" value={this.state.avatarUrl} onChange={ e => this.handleChange(e)}/> */}
           <label>Endereço:</label>
           <input type="text" name="address" value={this.state.address} onChange={ e => this.handleChange(e)} />
           <label>Cidade:</label>
-          <input type="text" name="sity" value={this.state.city} onChange={ e => this.handleChange(e)} />
+          <input type="text" name="city" value={this.state.city} onChange={ e => this.handleChange(e)} />
           
           <input type="submit" value="Submit" />
         </form>

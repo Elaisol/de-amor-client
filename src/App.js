@@ -54,13 +54,13 @@ class App extends Component {
           <Switch>
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/doe/id"
-              component={AnimalDetails}
+              path="/doe"
+              component={AnimalList}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/adote"
-              component={AnimalList}
+              path="/adote/id"
+              component={AnimalDetails}
             />
           </Switch>
         </div>
@@ -82,15 +82,15 @@ class App extends Component {
               path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
+              <ProtectedRoute
+                user={this.state.loggedInUser}
+                path="/doe"
+                component={AnimalList}
+              />
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/doe/id"
+              path="/adote/id"
               component={AnimalDetails}
-            />
-            <ProtectedRoute
-              user={this.state.loggedInUser}
-              path="/doe"
-              component={AnimalList}
             />
           </Switch> 
           <Home/>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/auth-service';
+import './Navbar.css';
 
 class Navbar extends Component {
   constructor(props){
@@ -26,7 +27,8 @@ class Navbar extends Component {
       return(
         <nav className="nav-style">
           <ul>
-            <li>Welcome, {this.state.loggedInUser.username}</li>
+            <li>Welcome, {this.state.loggedInUser.name}</li>
+            <li><Link to='/doe' style={{ textDecoration: 'none' }}>Doe</Link></li>
             <li><Link to='/adote' style={{ textDecoration: 'none' }}>Adote</Link></li>
             <li>
               <Link to='/'>

@@ -31,11 +31,11 @@ class EditAnimal extends Component {
     const description = this.state.description;
     const avatarUrl = this.state.avatarUrl;
     const address = this.state.address;
-    const city = this.state.city;;
+    const city = this.state.city;
 
     event.preventDefault();
 
-    axios.put(`http://localhost:5000/doe/doe/${this.props.theAnimal._id}`, { species, sexo, name, color, age, porte, raça, description, avatarUrl, address, city }, {withCredentials:true})
+    axios.put(`http://localhost:5000/doe/${this.props.theAnimal.id}`, { species, sexo, name, color, age, porte, raça, description, avatarUrl, address, city }, {withCredentials:true})
     .then( () => {
         this.props.getTheAnimal();
     })
