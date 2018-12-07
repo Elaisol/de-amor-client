@@ -29,7 +29,7 @@ class AnimalList extends Component {
     return(
       <div>
         <div style={{width: '60%', float:"left"}}>
-          { this.state.listOfAnimals.map((animal, index) => {
+          { this.state.listOfAnimals.map(animal => {
             return (
               <div key={animal._id}>
                 <Link to={`/doe/${animal._id}`}>
@@ -41,7 +41,7 @@ class AnimalList extends Component {
           }
         </div>
         <div style={{width: '40%', float:"right"}}>
-            <AddAnimal getData={this.getAllAnimals()}/>
+            <AddAnimal getData={this.getAllAnimals}/>
         </div>
       </div>
     )

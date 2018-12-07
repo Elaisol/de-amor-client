@@ -23,6 +23,7 @@ class AddAnimal extends Component {
 
     axios.post("http://localhost:5000/doe", { species, sexo, name, color, age, porte, raça, description, address, city }, {withCredentials:true})
     .then( () => {
+      this.props.getData();
       this.setState({ species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: ""});
     })
     .catch( error => console.log( error) )
@@ -60,7 +61,7 @@ class AddAnimal extends Component {
           <label>Cidade:</label>
           <input type="text" name="city" value={this.state.city} onChange={ e => this.handleChange(e)} />
           
-          <input type="submit" value="Submit" onClick={() => this.props.getData} />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     )

@@ -85,13 +85,13 @@ class App extends Component {
             />
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/doe"
-              component={AnimalList}
+              path="/doe/:id"
+              component={AnimalDetails}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/adote/id"
-              component={AnimalDetails}
+              path="/doe"
+              component={AnimalList}
             />
           </Switch>
           <Home />

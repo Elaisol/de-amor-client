@@ -55,7 +55,7 @@ class AnimalDetails extends Component {
       <div>
         <h1>{this.state.name}</h1>
         <p>{this.state.description}</p>
-        <div>{this.renderEditAnimal()} </div>
+        <div> </div>
         <button onClick={() => this.deleteAnimal(this.state._id)}>Deletar Animal</button>
         <Link to={"/"}>Voltar para o início</Link>
       </div>
