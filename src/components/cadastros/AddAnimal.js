@@ -60,7 +60,7 @@ class AddAnimal extends Component {
           <label>Cidade:</label>
           <input type="text" name="city" value={this.state.city} onChange={ e => this.handleChange(e)} />
           
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" onClick={() => this.props.getData} />
         </form>
       </div>
     )

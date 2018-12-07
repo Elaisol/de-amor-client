@@ -26,7 +26,6 @@ class AnimalList extends Component {
   }
 
   render(){
-    console.log(this.props.loggedInUser._id)
     return(
       <div>
         <div style={{width: '60%', float:"left"}}>
@@ -42,7 +41,7 @@ class AnimalList extends Component {
           }
         </div>
         <div style={{width: '40%', float:"right"}}>
-            <AddAnimal getData={() => this.getAllAnimals()}/>
+            <AddAnimal getData={this.getAllAnimals()}/>
         </div>
       </div>
     )

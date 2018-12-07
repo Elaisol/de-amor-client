@@ -50,6 +50,7 @@ class AnimalDetails extends Component {
     })
   }
   render() {
+    console.log('state', this.state)
     return (
       <div>
         <h1>{this.state.name}</h1>

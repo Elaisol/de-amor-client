@@ -20,13 +20,13 @@ class App extends Component {
   }
 
   fetchUser() {
-    if ( this.state.loggedInUser === null) {
+    if (this.state.loggedInUser === null) {
       this.service
         .loggedin()
         .then(response => {
           this.setState({
             loggedInUser: response
-          })
+          });
         })
         .catch(err => {
           this.setState({
@@ -43,7 +43,7 @@ class App extends Component {
   };
 
   render() {
-    this.fetchUser()
+    this.fetchUser();
     if (this.state.loggedInUser) {
       return (
         <div className="App">
@@ -54,13 +54,13 @@ class App extends Component {
           <Switch>
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/doe"
-              component={AnimalList}
+              path="/doe/:id"
+              component={AnimalDetails}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/adote/id"
-              component={AnimalDetails}
+              path="/doe"
+              component={AnimalList}
             />
           </Switch>
         </div>
@@ -68,9 +68,10 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-            <Navbar
+          <Navbar
             userInSession={this.state.loggedInUser}
-            getUser={this.getTheUser}/>
+            getUser={this.getTheUser}
+          />
           <Switch>
             <Route
               exact
@@ -82,18 +83,18 @@ class App extends Component {
               path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
-              <ProtectedRoute
-                user={this.state.loggedInUser}
-                path="/doe"
-                component={AnimalList}
-              />
+            <ProtectedRoute
+              user={this.state.loggedInUser}
+              path="/doe"
+              component={AnimalList}
+            />
             <ProtectedRoute
               user={this.state.loggedInUser}
               path="/adote/id"
               component={AnimalDetails}
             />
-          </Switch> 
-          <Home/>
+          </Switch>
+          <Home />
         </div>
       );
     }
