@@ -6,9 +6,9 @@ import AuthService from '../auth/auth-service';
 import AddAnimal from './AddAnimal';
 
 class AnimalList extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       listOfAnimals: this.props.loggedInUser.animal,
       user: this.props.loggedInUser
     };
@@ -35,7 +35,7 @@ class AnimalList extends Component {
   }
 
   getAllAnimals = () => {
-    axios.get(`http://localhost:5000/adote/`)
+    axios.get(`http://localhost:5000/doe`)
       .then(res => {
         this.setState({
           allTheAnimals: res.data
@@ -46,24 +46,25 @@ class AnimalList extends Component {
   componentDidMount() {
     this.getPopulatedAnimals();
   }
-  
-  render(){
-    return(
+
+  render() {
+    return (
       <div>
-        <div style={{width: '60%', float:"left"}}>
-          { this.state.listOfAnimals.map(animal => {
+        <div style={{ width: '60%', float: "left" }}>
+          {this.state.listOfAnimalsthis && this.state.listOfAnimals.map(animal => {
             return (
               <div key={animal._id}>
                 <Link to={`/doe/${animal._id}`}>
                   <h3>{animal.name}</h3>
                 </Link>
-                <p style={{maxWidth: '400px'}} >{animal.description} </p>
+                <p style={{ maxWidth: '400px' }} >{animal.description} </p>
               </div>
-            )})
+            )
+          })
           }
         </div>
-        <div style={{width: '40%', float:"right"}}>
-            <AddAnimal getData={this.getAllAnimals}/>
+        <div style={{ width: '40%', float: "right" }}>
+          <AddAnimal getData={this.getAllAnimals} />
         </div>
       </div>
     )

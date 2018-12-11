@@ -5,14 +5,14 @@ import axios from 'axios';
 class EditAnimal extends Component {
   constructor(props){
     super(props);
-    this.state = { filePath: this.props.theAnimal.filePath, species: this.props.theAnimal.species, gender: this.props.theAnimal.gender, name: this.props.theAnimal.name, color: this.props.theAnimal.color, age: this.props.theAnimal.age, size: this.props.theAnimal.size, breed: this.props.theAnimal.breed, description: this.props.theAnimal.description, address: this.props.theAnimal.address, city: this.props.theAnimal.city };
+    this.state = { filePath: this.props.theAnimal.filePath, type: this.props.theAnimal.type, gender: this.props.theAnimal.gender, name: this.props.theAnimal.name, color: this.props.theAnimal.color, age: this.props.theAnimal.age, size: this.props.theAnimal.size, breed: this.props.theAnimal.breed, description: this.props.theAnimal.description, address: this.props.theAnimal.address, city: this.props.theAnimal.city };
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { 
       filePath,
-      species,
+      type,
       gender,
       name,
       color,
@@ -24,7 +24,7 @@ class EditAnimal extends Component {
       city
     } = this.state;
 
-    axios.put(`http://localhost:5000/doe/${this.props.theAnimal}`, { filePath, species, gender, name, color, age, size, breed, description, address, city }, {withCredentials:true})
+    axios.put(`http://localhost:5000/doe/${this.props.theAnimal}`, { filePath, type, gender, name, color, age, size, breed, description, address, city }, {withCredentials:true})
     .then( () => {
       // this.props.getTheAnimal();
     })
@@ -46,10 +46,10 @@ class EditAnimal extends Component {
           {/* <label>Imagem</label>
           <input type="file" name="filePath" value={this.state.filePath} onChange={(e) => this.handleChange(e)} /> */}
           <label>Espécie:</label>
-          <input type="text" name="species" value={this.state.species} onChange={e => this.handleChange(e)} />
+          <input type="text" name="type" value={this.state.type} onChange={e => this.handleChange(e)} />
           <label>Sexo:</label>
           <input type="text" name="gender" value={this.state.gender} onChange={e => this.handleChange(e)} />
-          <label>Name:</label>
+          <label>Nome:</label>
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
           <label>Cor:</label>
           <input type="text" name="color" value={this.state.color} onChange={e => this.handleChange(e)} />

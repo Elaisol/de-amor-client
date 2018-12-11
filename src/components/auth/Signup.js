@@ -22,7 +22,6 @@ class Signup extends Component {
           password: "",
         });
         this.props.getUser(response)
-        console.log('oi')
       })
       .catch(error => console.log(error));
   };

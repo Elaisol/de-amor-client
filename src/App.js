@@ -63,11 +63,11 @@ class App extends Component {
               path="/doe"
               component={AnimalList}
             />
-            <Route
+            {/* <Route
               user={this.state.loggedInUser}
               path="/adote/:id"
               component={AnimalDetails}
-            />
+            /> */}
             <Route
               user={this.state.loggedInUser}
               path="/adote"
@@ -94,16 +94,11 @@ class App extends Component {
               path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
-            <Route
-              user={this.state.loggedInUser}
-              path="/adote/:id"
-              component={AnimalDetails}
-            />
-            <Route
-              user={this.state.loggedInUser}
+            {/* <Route
+              exact
               path="/adote"
               component={AdoteList}
-            />
+            /> */}
           </Switch>
           <Home />
         </div>

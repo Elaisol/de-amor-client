@@ -42,8 +42,10 @@ class Navbar extends Component {
       return ( 
         <nav className="nav-style">
           <ul>
-            <li><Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></li>
-            <li><Link to='/signup' style={{ textDecoration: 'none' }}>Signup</Link></li>
+          {/* <li><Link to='/' style={{ textDecoration: 'none' }}>Sobre Nós</Link></li>
+          <li><Link to='/adote' style={{ textDecoration: 'none' }}>Adote</Link></li> */}
+            <li><Link to='/signup' style={{ textDecoration: 'none' }}>Doe</Link></li>
+            <li><Link to='/login' style={{ textDecoration: 'none' }}>Entre</Link></li>
           </ul>
         </nav>
       )

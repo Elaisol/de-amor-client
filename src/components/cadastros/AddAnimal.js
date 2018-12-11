@@ -4,17 +4,17 @@ import axios from 'axios';
 class AddAnimal extends Component {
   constructor(props) {
     super(props);
-    this.state = { filePath: "", species: "", gender: "", name: "", color: "", age: "", size: "", breed: "", description: "", address: "", city: "" };
+    this.state = { filePath: "", type: "", gender: "", name: "", color: "", age: "", size: "", breed: "", description: "", address: "", city: "" };
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { filePath, species, gender, name, color, age, size, breed, description, address, city } = this.state;
+    const { filePath, type, gender, name, color, age, size, breed, description, address, city } = this.state;
 
-    axios.post("http://localhost:5000/doe", { filePath, species, gender, name, color, age, size, breed, description, address, city }, { withCredentials: true })
+    axios.post("http://localhost:5000/doe/:id", { filePath, type, gender, name, color, age, size, breed, description, address, city }, { withCredentials: true })
       .then(() => {
         this.props.getData();
-        this.setState = ({ filePath: "", species: "", gender: "", name: "", color: "", age: "", size: "", breed: "", description: "", address: "", city: "" });
+        this.setState = ({ filePath: "", type: "", gender: "", name: "", color: "", age: "", size: "", breed: "", description: "", address: "", city: "" });
       })
       .catch(error => console.log(error))
   }
@@ -38,10 +38,10 @@ class AddAnimal extends Component {
           <label>Imagem</label>
           <input type="file" name="filePath" value={this.state.filePath} onChange={(e) => this.handleChange(e)} />
           <label>Espécie:</label>
-          <input type="text" name="species" value={this.state.species} onChange={e => this.handleChange(e)} />
+          <input type="text" name="type" value={this.state.type} onChange={e => this.handleChange(e)} />
           <label>Sexo:</label>
           <input type="text" name="gender" value={this.state.gender} onChange={e => this.handleChange(e)} />
-          <label>Name:</label>
+          <label>Nome:</label>
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
           <label>Cor:</label>
           <input type="text" name="color" value={this.state.color} onChange={e => this.handleChange(e)} />
