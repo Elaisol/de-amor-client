@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
-import "./App.css";
-import Home from "./components/Home";
+// import "./App.css";
+import Home from "./components/home/Home";
+import "./components/home/Home";
 import { Switch, Route } from "react-router-dom";
 
 import AnimalDetails from "./components/cadastros/AnimalDetails";
 import AnimalList from "./components/cadastros/AnimalList";
-import Navbar from "./components/navbar/Navbar";
+// import Navbar from "./components/navbar/Navbar";
 import Signup from "./components/auth/Signup";
 import AuthService from "./components/auth/auth-service";
 import Login from "./components/auth/Login";
 import ProtectedRoute from "./components/auth/protected-route";
+import AdoteList from "./components/adote/AdoteList";
 
 class App extends Component {
   constructor(props) {
@@ -47,7 +49,7 @@ class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <div className="App">
-          <Navbar
+          <Home
             userInSession={this.state.loggedInUser}
             getUser={this.getTheUser}
           />
@@ -62,13 +64,18 @@ class App extends Component {
               path="/doe"
               component={AnimalList}
             />
+            <ProtectedRoute
+              user={this.state.loggedInUser}
+              path="/adote"
+              component={AdoteList}
+            />
           </Switch>
         </div>
       );
     } else {
       return (
         <div className="App">
-          {/* <Navbar
+          <Home
             userInSession={this.state.loggedInUser}
             getUser={this.getTheUser}
           />
@@ -93,8 +100,8 @@ class App extends Component {
               path="/doe"
               component={AnimalList}
             />
-          </Switch> */}
-          <Home />
+          </Switch>
+          {/* <Home /> */}
         </div>
       );
     }

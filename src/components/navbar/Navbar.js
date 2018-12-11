@@ -36,6 +36,70 @@ class Navbar extends Component {
               </Link>
             </li>
           </ul>
+        </nav> 
+      )
+    } else {
+      return ( 
+        <nav className="nav-style">
+          <ul>
+            <li><Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></li>
+            <li><Link to='/signup' style={{ textDecoration: 'none' }}>Signup</Link></li>
+          </ul>
+        </nav>
+      )
+    }
+  }
+}
+
+export default Navbar;ink to='/'>
+                <button onClick={() => this.logoutUser()}>Logout</button>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )
+    } else {
+      return ( 
+        <nav className="nav-style">
+          <ul>
+            <li><Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></li>
+            <li><Link to='/signup' style={{ textDecoration: 'none' }}>Signup</Link></li>
+          </ul>
+        </nav>
+      )
+    }
+  }
+}
+
+export default Navbar; = new AuthService();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({...this.state, loggedInUser: nextProps["userInSession"]});
+  }
+
+  logoutUser = () =>{
+    this.service.logout()
+    .then(() => {
+      this.setState({ loggedInUser: null });
+      this.props.getUser(null);  
+    })
+  }
+
+  render(){
+    if(this.state.loggedInUser){
+      return(
+        <nav className="nav-style">
+          <ul>
+            <li>Welcome, {this.state.loggedInUser.name}</li>
+            <li><Link to='/doe' style={{ textDecoration: 'none' }}>Doe</Link></li>
+            <li><Link to='/adote' style={{ textDecoration: 'none' }}>Adote</Link></li>
+            <li>
+              <Link to='/'>
+                <button onClick={() => this.logoutUser()}>Logout</button>
+              </Link>
+            </li>
+          </ul>
         </nav>
       )
     } else {
