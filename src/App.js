@@ -68,7 +68,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <Navbar
+          {/* <Navbar
             userInSession={this.state.loggedInUser}
             getUser={this.getTheUser}
           />
@@ -93,7 +93,7 @@ class App extends Component {
               path="/doe"
               component={AnimalList}
             />
-          </Switch>
+          </Switch> */}
           <Home />
         </div>
       );
