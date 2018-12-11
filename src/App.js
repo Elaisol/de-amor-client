@@ -11,6 +11,7 @@ import Signup from "./components/auth/Signup";
 import AuthService from "./components/auth/auth-service";
 import Login from "./components/auth/Login";
 import ProtectedRoute from "./components/auth/protected-route";
+import AdoteList from "./components/Adote/AdoteList";
 
 class App extends Component {
   constructor(props) {
@@ -62,6 +63,16 @@ class App extends Component {
               path="/doe"
               component={AnimalList}
             />
+            <Route
+              user={this.state.loggedInUser}
+              path="/adote/:id"
+              component={AnimalDetails}
+            />
+            <Route
+              user={this.state.loggedInUser}
+              path="/adote"
+              component={AdoteList}
+            />
           </Switch>
         </div>
       );
@@ -83,15 +94,15 @@ class App extends Component {
               path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
-            <ProtectedRoute
+            <Route
               user={this.state.loggedInUser}
-              path="/doe/:id"
+              path="/adote/:id"
               component={AnimalDetails}
             />
-            <ProtectedRoute
+            <Route
               user={this.state.loggedInUser}
-              path="/doe"
-              component={AnimalList}
+              path="/adote"
+              component={AdoteList}
             />
           </Switch>
           <Home />

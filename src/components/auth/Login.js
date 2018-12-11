@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
 
+
 class Login extends Component {
   constructor(props){
     super(props);
@@ -11,8 +12,8 @@ class Login extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+
+    const { username, password } = this.state;
 
     this.service.login(username, password)
     .then( response => {
@@ -27,12 +28,12 @@ class Login extends Component {
     this.setState({[name]: value});
   }
     
-  render(){
+  render() {
     return(
       <div>
         <form onSubmit={this.handleFormSubmit}>
           <label>Email:</label>
-          <input type="email" name="username" value={this.state.email} onChange={ e => this.handleChange(e)}/>
+          <input type="email" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
 
           <label>Password:</label>
           <textarea name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />

@@ -1,30 +1,52 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import AuthService from '../auth/auth-service';
 
 import AddAnimal from './AddAnimal';
 
 class AnimalList extends Component {
   constructor(props){
-      super(props);
-      this.state = { 
-        listOfAnimals: []
-      };
+    super(props);
+    this.state = { 
+      listOfAnimals: this.props.loggedInUser.animal,
+      user: this.props.loggedInUser
+    };
+    this.service = new AuthService();
   }
 
-  getAllAnimals = () =>{
-    axios.get(`http://localhost:5000/doe/${this.props.loggedInUser._id}`, {withCredentials:true})
-    .then(responseFromDoe => {
-      this.setState({
-        listOfAnimals: responseFromDoe.data
+  getPopulatedAnimals = () => {
+    this.service.loggedin().then(response => {
+      axios.get(`http://localhost:5000/doe/${response._id}`)
+        .then(res => {
+          this.setState({
+            listOfAnimals: res.data
+          });
+        });
+
+    });
+    // axios.get(`http://localhost:5000/loggedin/`)
+    // .then(res => {
+    //   this.setState({
+    //     user: res.data
+    //   })
+    //   console.log('truta', this.state.user);
+    //   }).catch(err => console.log(err));
+  }
+
+  getAllAnimals = () => {
+    axios.get(`http://localhost:5000/adote/`)
+      .then(res => {
+        this.setState({
+          allTheAnimals: res.data
+        })
       })
-    })
   }
 
   componentDidMount() {
-    this.getAllAnimals();
+    this.getPopulatedAnimals();
   }
-
+  
   render(){
     return(
       <div>

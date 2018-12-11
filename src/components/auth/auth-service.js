@@ -3,7 +3,7 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     let service = axios.create({
-      baseURL: 'http://localhost:5000/auth',
+      baseURL: 'http://localhost:5000/',
       withCredentials: true
     });
     this.service = service;
@@ -18,7 +18,6 @@ class AuthService {
   loggedin = () => {
     return this.service.get('/loggedin')
     .then(response => {
-      console.log(response.data === '')
       return response.data})
   }
 
@@ -31,7 +30,7 @@ class AuthService {
     return this.service.get('/logout', {})
     .then(response => response.data)
   }
-  
+
 }
 
 export default AuthService;
