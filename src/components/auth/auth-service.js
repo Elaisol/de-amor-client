@@ -18,7 +18,6 @@ class AuthService {
   loggedin = () => {
     return this.service.get('/loggedin')
     .then(response => {
-      console.log(response.data === '')
       return response.data})
   }
 
@@ -31,7 +30,7 @@ class AuthService {
     return this.service.get('/logout', {})
     .then(response => response.data)
   }
-  
+
 }
 
 export default AuthService;
