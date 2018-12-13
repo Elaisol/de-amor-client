@@ -1,51 +1,48 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ImageUpload from './ImageUpload'
 
-
-class EditAnimal extends Component {
-  constructor(props){
+class AddAnimal extends Component {
+  constructor(props) {
     super(props);
-    this.state = { filePath: this.props.theAnimal.filePath, type: this.props.theAnimal.type, gender: this.props.theAnimal.gender, name: this.props.theAnimal.name, color: this.props.theAnimal.color, age: this.props.theAnimal.age, size: this.props.theAnimal.size, breed: this.props.theAnimal.breed, description: this.props.theAnimal.description, address: this.props.theAnimal.address, city: this.props.theAnimal.city };
+    this.state = { imageUrl: null, type: "", gender: "", name: "", color: "", age: "", size: "", breed: "", description: "", address: "", city: "" };
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { 
-      filePath,
-      type,
-      gender,
-      name,
-      color,
-      age,
-      size,
-      breed,
-      description,
-      address,
-      city
-    } = this.state;
-
-    axios.put(`http://localhost:5000/doe/${this.props.theAnimal}`, { filePath, type, gender, name, color, age, size, breed, description, address, city }, {withCredentials:true})
-    .then( () => {
-      // this.props.getTheAnimal();
+    const {type, gender, name, color, age, size, breed, description, address, city } = this.state;
+    
+    ImageUpload.addPicture(this.state.imageUrl, { type, gender, name, color, age, size, breed, description, address, city })
+    .then(() => {
+      this.props.getData();
+      this.setState({ species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: "" });
     })
-    .catch( error => console.log(error) )
+    .catch(error => console.log(error));
   }
 
   handleChange = (event) => {
-    const {name, value} = event.target;
-    this.setState({[name]: value});
+    const { name, value } = event.target;
+    if (name === 'imageUrl') {
+      this.setState({ imageUrl: event.target.files[0] });
+    } else {
+      this.setState({ [name]: value });
+    }
   }
 
-  render(){
-    console.log(this.props)
+  // handleChangeFile(e) {
+  //   this.setState({
+  //     imageUrl: e.target.filePath[0],
+  //     pictureUrl: URL.createObjectURL(e.target.filePath[0])
+  //   })
+  // }
+
+  render() {
     return (
       <div>
-        <hr />
-        <h3>Editar Animal</h3>
         <form onSubmit={this.handleFormSubmit}>
-          {/* <label>Imagem</label>
-          <input type="file" name="filePath" value={this.state.filePath} onChange={(e) => this.handleChange(e)} /> */}
-          <label>Espécie:</label>
+          <label>Foto:</label>
+          <input type="file" name="imageUrl" onChange={ e => this.handleChange(e)}/>
+          <label>Tipo do Animal:</label>
           <input type="text" name="type" value={this.state.type} onChange={e => this.handleChange(e)} />
           <label>Sexo:</label>
           <input type="text" name="gender" value={this.state.gender} onChange={e => this.handleChange(e)} />
@@ -73,4 +70,4 @@ class EditAnimal extends Component {
   }
 }
 
-export default EditAnimal;
+export default AddAnimal;
