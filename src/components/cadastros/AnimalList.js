@@ -13,7 +13,7 @@ class AnimalList extends Component {
   }
 
   getAllAnimals = () =>{
-    axios.get(`http://localhost:5000/doe/${this.props.loggedInUser._id}`, {withCredentials:true})
+    axios.get(`http://localhost:5000/cadastro/${this.props.loggedInUser._id}`, {withCredentials:true})
     .then(responseFromDoe => {
       this.setState({
         listOfAnimals: responseFromDoe.data
@@ -28,19 +28,19 @@ class AnimalList extends Component {
   render(){
     return(
       <div>
-        <div style={{width: '60%', float:"left"}}>
+        <div>
           { this.state.listOfAnimals.map(animal => {
             return (
               <div key={animal._id}>
-                <Link to={`/doe/${animal._id}`}>
+                <Link to={`/doe/animal/${animal._id}`}>
                   <h3>{animal.name}</h3>
                 </Link>
-                <p style={{maxWidth: '400px'}} >{animal.description} </p>
+                <p>{animal.description} </p>
               </div>
             )})
           }
         </div>
-        <div style={{width: '40%', float:"right"}}>
+        <div>
             <AddAnimal getData={this.getAllAnimals}/>
         </div>
       </div>

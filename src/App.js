@@ -1,18 +1,15 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
-// import "./App.css";
 import Home from "./components/home/Home";
 import "./components/home/Home";
 import { Switch, Route } from "react-router-dom";
-
 import AnimalDetails from "./components/cadastros/AnimalDetails";
 import AnimalList from "./components/cadastros/AnimalList";
-// import Navbar from "./components/navbar/Navbar";
 import Signup from "./components/auth/Signup";
 import AuthService from "./components/auth/auth-service";
 import Login from "./components/auth/Login";
 import ProtectedRoute from "./components/auth/protected-route";
 import AdoteList from "./components/adote/AdoteList";
+import Navbar from "./components/navbar/Navbar"
 
 class App extends Component {
   constructor(props) {
@@ -48,20 +45,18 @@ class App extends Component {
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
-        <div className="App">
-          <Home
-            userInSession={this.state.loggedInUser}
-            getUser={this.getTheUser}
-          />
+        <div>
+           <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+
           <Switch>
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/doe/:id"
+              path="/doe/animal/:id"
               component={AnimalDetails}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}
-              path="/doe"
+              path="/cadastro"
               component={AnimalList}
             />
             <ProtectedRoute
@@ -74,12 +69,14 @@ class App extends Component {
       );
     } else {
       return (
-        <div className="App">
-          <Home
-            userInSession={this.state.loggedInUser}
-            getUser={this.getTheUser}
-          />
+        <div>
           <Switch>
+            
+            <Route
+              exact
+              path="/"
+              component={Home}
+            />
             <Route
               exact
               path="/signup"
@@ -90,18 +87,12 @@ class App extends Component {
               path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
-            <ProtectedRoute
-              user={this.state.loggedInUser}
-              path="/doe/:id"
-              component={AnimalDetails}
-            />
-            <ProtectedRoute
-              user={this.state.loggedInUser}
-              path="/doe"
-              component={AnimalList}
+             <Route
+              exact
+              path="/adote"
+              component={AdoteList}
             />
           </Switch>
-          {/* <Home /> */}
         </div>
       );
     }

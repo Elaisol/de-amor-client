@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/auth-service';
+import "./Adote.css";
+import Navbar from "../../components/navbar/Navbar";
 
 class AdoteList extends Component {
   constructor(props) {
@@ -29,12 +31,14 @@ class AdoteList extends Component {
   render() {
     return (
       <div>
-        <div style={{ width: '60%', float: "left" }}>
+        <div>
           {this.state.allTheAnimals.map(animal => {
             return (
+              <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser}
+              />
               <div key={animal._id}>
                 <h3>{animal.name}</h3>
-                <p style={{ maxWidth: '400px' }}>{animal.description}</p>
+                <p>{animal.description}</p>
                 <Link to={`/`}>Quero Adotar</Link>
               </div>
             )

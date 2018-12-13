@@ -5,17 +5,17 @@ class EditAnimal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filePath: this.props.theAnimal.filePath,
-      type: this.props.theAnimal.type,
-      gender: this.props.theAnimal.gender,
-      name: this.props.theAnimal.name,
-      color: this.props.theAnimal.color,
-      age: this.props.theAnimal.age,
-      size: this.props.theAnimal.size,
-      breed: this.props.theAnimal.breed,
-      description: this.props.theAnimal.description,
-      address: this.props.theAnimal.address,
-      city: this.props.theAnimal.city
+      // filePath: this.props.theAnimal.filePath,
+      // type: this.props.theAnimal.type,
+      // gender: this.props.theAnimal.gender,
+      name: this.props.state.name,
+      // color: this.props.theAnimal.color,
+      // age: this.props.theAnimal.age,
+      // size: this.props.theAnimal.size,
+      // breed: this.props.theAnimal.breed,
+      // description: this.props.theAnimal.description,
+      // address: this.props.theAnimal.address,
+      // city: this.props.theAnimal.city
     };
   }
 
@@ -63,67 +63,8 @@ class EditAnimal extends Component {
     this.setState({ [name]: value});
   };
 
-  // handleChangeSexo = event => {
-  //   this.setState({
-  //     sexo: event.target.value
-  //   });
-  // };
-
-  // handleChangeName = event => {
-  //   this.setState({
-  //     name: event.target.value
-  //   });
-  // };
-
-  // handleChangeColor = event => {
-  //   this.setState({
-  //     color: event.target.value
-  //   });
-  // };
-
-  // handleChangeAge = event => {
-  //   this.setState({
-  //     age: event.target.value
-  //   });
-  // };
-
-  // handleChangePorte = event => {
-  //   this.setState({
-  //     porte: event.target.value
-  //   });
-  // };
-
-  // handleChangeRaça = event => {
-  //   this.setState({
-  //     raça: event.target.value
-  //   });
-  // };
-
-  // handleChangeDesc = event => {
-  //   this.setState({
-  //     description: event.target.value
-  //   });
-  // };
-
-  // handleChangeAvatar = event => {
-  //   this.setState({
-  //     avatarUrl: event.target.value
-  //   });
-  // };
-
-  // handleChangeAddress = event => {
-  //   this.setState({
-  //     address: event.target.value
-  //   });
-  // };
-
-  // handleChangeCity = event => {
-  //   this.setState({
-  //     city: event.target.value
-  //   });
-  // };
-
   render() {
+    console.log('render do edit', this.props.state)
     return (
       <div>
         <hr />

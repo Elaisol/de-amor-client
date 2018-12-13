@@ -18,11 +18,10 @@ class AddAnimal extends Component {
     const size = this.state.size;
     const breed = this.state.breed;
     const description = this.state.description;
-    // const avatarUrl = this.state.avatarUrl;
     const address = this.state.address;
     const city = this.state.city;
 
-    axios.post("http://localhost:5000/doe", { filePath, type, gender, name, color, age, size, breed, description, address, city }, {withCredentials:true})
+    axios.post("http://localhost:5000/cadastro/", { filePath, type, gender, name, color, age, size, breed, description, address, city }, {withCredentials:true})
     .then( () => {
       this.props.getData();
       this.setState({ filePath: "", species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: ""});
@@ -55,8 +54,6 @@ class AddAnimal extends Component {
           <input type="text" name="breed" value={this.state.breed} onChange={ e => this.handleChange(e)}/>
           <label>Descrição:</label>
           <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)} />
-          {/* <label>Foto:</label>
-          <input type="text" name="title" value={this.state.avatarUrl} onChange={ e => this.handleChange(e)}/> */}
           <label>Endereço:</label>
           <input type="text" name="address" value={this.state.address} onChange={ e => this.handleChange(e)} />
           <label>Cidade:</label>
