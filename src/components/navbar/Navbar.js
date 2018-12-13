@@ -28,7 +28,7 @@ class Navbar extends Component {
         <nav className="nav-style">
           <ul>
             <li>Welcome, {this.state.loggedInUser.name}</li>
-            <li><Link to='/doe' style={{ textDecoration: 'none' }}>Doe</Link></li>
+            <li><Link to='/cadastro' style={{ textDecoration: 'none' }}>Home</Link></li>
             <li><Link to='/adote' style={{ textDecoration: 'none' }}>Adote</Link></li>
             <li>
               <Link to='/'>

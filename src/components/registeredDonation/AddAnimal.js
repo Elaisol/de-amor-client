@@ -5,17 +5,17 @@ import ImageUpload from './ImageUpload'
 class AddAnimal extends Component {
   constructor(props) {
     super(props);
-    this.state = { imageUrl: null, type: "", gender: "", name: "", color: "", age: "", size: "", breed: "", description: "", address: "", city: "" };
+    this.state = { imageUrl: null, type: "", gender: "", name: "", color: "", age: "", size: "", breed: "", description: "", address: "", city: "", contacts: "" };
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {type, gender, name, color, age, size, breed, description, address, city } = this.state;
+    const {type, gender, name, color, age, size, breed, description, address, city, contacts, } = this.state;
     
-    ImageUpload.addPicture(this.state.imageUrl, { type, gender, name, color, age, size, breed, description, address, city })
+    ImageUpload.addPicture(this.state.imageUrl, { type, gender, name, color, age, size, breed, description, address, city, contacts })
     .then(() => {
       this.props.getData();
-      this.setState({ species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: "" });
+      this.setState({ species: "", sexo: "", name: "", color: "", age: "", porte: "", raça: "", description: "", address: "", city: "", contacts: "" });
     })
     .catch(error => console.log(error));
   }
@@ -28,13 +28,6 @@ class AddAnimal extends Component {
       this.setState({ [name]: value });
     }
   }
-
-  // handleChangeFile(e) {
-  //   this.setState({
-  //     imageUrl: e.target.filePath[0],
-  //     pictureUrl: URL.createObjectURL(e.target.filePath[0])
-  //   })
-  // }
 
   render() {
     return (
@@ -51,7 +44,7 @@ class AddAnimal extends Component {
           <label>Cor:</label>
           <input type="text" name="color" value={this.state.color} onChange={e => this.handleChange(e)} />
           <label>Idade:</label>
-          <input type="number" name="age" value={this.state.age} onChange={e => this.handleChange(e)} />
+          <input type="text" name="age" value={this.state.age} onChange={e => this.handleChange(e)} />
           <label>Porte:</label>
           <input type="text" name="size" value={this.state.size} onChange={e => this.handleChange(e)} />
           <label>Raça:</label>
@@ -60,8 +53,10 @@ class AddAnimal extends Component {
           <input type="text" name="address" value={this.state.address} onChange={e => this.handleChange(e)} />
           <label>Cidade:</label>
           <input type="text" name="city" value={this.state.city} onChange={e => this.handleChange(e)} />
-          <label>Descrição:</label>
+          <label>Outras Informaçōes:</label>
           <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
+          <label>Dados para Contato::</label>
+          <input type="text" name="contacts" value={this.state.contact} onChange={e => this.handleChange(e)} />
 
           <input type="submit" value="Submit" />
         </form>

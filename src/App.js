@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-// import "./App.css";
 import Home from "./components/home/Home";
-import "./components/home/Home";
-import { Switch, Route } from "react-router-dom";
-import AnimalDetails from "./components/cadastrosDoacao/AnimalDetails";
-import AnimalList from "./components/cadastrosDoacao/AnimalList";
-// import Navbar from "./components/navbar/Navbar";
+import "./components//home/Home";
+import { Switch, Route, Redirect } from "react-router-dom";
+import AnimalDetails from "./components/registeredDonation/AnimalDetails";
+import AnimalList from "./components/registeredDonation/AnimalList";
+import Navbar from "./components/navbar/Navbar";
 import Signup from "./components/auth/Signup";
 import AuthService from "./components/auth/auth-service";
 import Login from "./components/auth/Login";
 import ProtectedRoute from "./components/auth/protected-route";
-import AdoteList from "./components/adocao/AdoteList";
+import AdoptList from "./components/adoption/AdoptList";
 
 class App extends Component {
   constructor(props) {
@@ -47,10 +46,11 @@ class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <div className="App">
-          <Home
+          <Navbar
             userInSession={this.state.loggedInUser}
             getUser={this.getTheUser}
           />
+          <Redirect from="/login" to="/cadastro" />
           <Switch>
             <ProtectedRoute
               user={this.state.loggedInUser}
@@ -65,7 +65,7 @@ class App extends Component {
             <ProtectedRoute
               user={this.state.loggedInUser}
               path="/adote"
-              component={AdoteList}
+              component={AdoptList}
             />
           </Switch>
         </div>
@@ -73,10 +73,6 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <Home
-            userInSession={this.state.loggedInUser}
-            getUser={this.getTheUser}
-          />
           <Switch>
             <Route
               exact
@@ -88,13 +84,17 @@ class App extends Component {
               path="/login"
               render={() => <Login getUser={this.getTheUser} />}
             />
-            <Route
+            {/* <Route
               exact
               path="/adote"
-              component={AdoteList}
+              component={AdoptList}
+            /> */}
+            <Route
+              exact
+              path="/"
+              component={Home}
             />
           </Switch>
-          {/* <Home /> */}
         </div>
       );
     }

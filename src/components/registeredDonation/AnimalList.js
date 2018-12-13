@@ -33,7 +33,7 @@ class AnimalList extends Component {
             return (
               <div key={animal._id}>
                 <Link to={`animal/${animal._id}`}>
-                  <h3>{animal.name}</h3>
+                  <h5>{animal.name}</h5>
                 </Link>
                 <img src={animal.imageUrl} alt = {animal.name} style={{ width: '50px', height: '70px' }}/> 
                 <p >{animal.description} </p>

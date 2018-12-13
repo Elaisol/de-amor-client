@@ -41,9 +41,9 @@ class AnimalDetails extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { type, gender, name, color, age, size, breed, description, address, city } =  this.state;
+    const { type, gender, name, color, age, size, breed, description, address, city, contacts } =  this.state;
     
-    axios.put(`http://localhost:5000/animal/${this.state._id}`, { type, gender, name, color, age, size, breed, description, address, city }, { withCredentials: true })
+    axios.put(`http://localhost:5000/animal/${this.state._id}`, { type, gender, name, color, age, size, breed, description, address, city, contacts }, { withCredentials: true })
       .then(() => {
         this.props.getSingleAnimal();
       })
@@ -122,7 +122,14 @@ class AnimalDetails extends Component {
             value={this.state.city}
             onChange={e => this.handleChange(e)}
           />
-          <label>Descrição:</label>
+          <label>Dados para Contato:</label>
+          <input
+            type="text"
+            name="contacts"
+            value={this.state.contacts}
+            onChange={e => this.handleChange(e)}
+          />
+          <label>Outras Informaçōes:</label>
           <input
             type="text"
             name="description"
